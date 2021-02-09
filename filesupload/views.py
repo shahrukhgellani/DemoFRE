@@ -16,7 +16,7 @@ def upload_file(request):
         msg = '<span style="color: green;">' + request.POST.get('catagory') + ' successfully uploaded</span>'
 
         handle_uploaded_file(request.FILES['file'], request.POST.get('catagory').lower())
-        out = filedata.extract(request.FILES['file'].name)
+        out = filedata.extract_multi(request.FILES['file'].name, request.POST.get('catagory').lower())
         print(out)
         context = {'msg': msg, 'time': 'Extracted Data : ',
                    'outpt': '<span style="color: red;">' + str(out) + '</span>'}
@@ -41,7 +41,8 @@ def upload_multiple_files(request):
         for f in files:
             handle_uploaded_file(f, catagory)
             out.append(f.name)
-            out.append(filedata.extract(f.name))
+            out.append(filedata.extract_multi(f.name, catagory))
+            #Testing
 
         context = {'msg': msg, 'time': 'Extracted Data : ',
                    'outpt': '<span style="color: red;">' + str(out) + '</span>'}

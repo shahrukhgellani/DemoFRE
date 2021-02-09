@@ -41,10 +41,6 @@ def pdf_splitter(path):
         with open(output_filename, 'wb') as out:
             pdf_writer.write(out)
         print('Created: {}'.format(output_filename))
-if __name__ == '__main__':
-    path = './pdf_input/Popular_PO_in_PDF.pdf'
-    pdf_splitter(path)
-
 
 
 # extract the info
