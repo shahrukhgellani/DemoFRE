@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django - Single File Upload</title>
+</head>
+<body>
+<div style="width: 500px; margin: auto;">
+    <fieldset name="Single File Upload">
+        {% if msg %} {% autoescape off %} {{ msg }} {% endautoescape %} {% endif %}
+        <form method="post" action="/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <dl>
+                <p>
+                    <label>Choose files</label>
+                    <input type="file" name="file" autocomplete="off" required value=" ">
+                </p>
+                <p>
+                    <label>File Type</label>
+                    <input type="radio" name="catagory" id="1" value='Invoice' checked/>Invoice
+                    <input type="radio" name="catagory" id="1" value='Purchase Order'/>Purchase Order
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Upload">
+            </p>
+            <br><br>
+            {{ time }}
+            {% autoescape off %} {{ outpt }} {% endautoescape %}
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>

@@ -1,0 +1,184 @@
+# -*- coding: utf-8 -*-
+issuer: A.W.FABER-CASTELL (M) SDN BHD
+keywords:
+  - Purchase Order
+  - A.W.FABER-CASTELL (M) SDN BHD
+  - popularworld
+fields:
+  invoice_number: NO.\s+(\d+)
+  date: DATE\s+(\d{1,2}\.\d{1,2}\.\d{4})
+  #amount: Total\s+(\d+\,\d+\.\d+)
+  amount: NO.\s+(\d+)
+area:
+  - name: "From_Address"
+    area: {x: 98,y: 341,r: 300,W: 885,H: 358}
+  - name: "To_Address"
+    area: {x: 1373,y: 354,r: 300,W: 1070,H: 321}
+  - name: "total"
+    area: {x: 2141,y: 2501,r: 300,W: 324,H: 76}
+
+  - name: "vendor_no"
+    area: {x: 15,y: 767,r: 300,W: 210,H: 50}
+  - name: "fax_no"
+    area: {x: 374,y: 767,r: 300,W: 315,H: 50}
+  - name: "delivery_date"
+    area: {x: 740,y: 767,r: 300,W: 315,H: 50}
+  - name: "payment_terms"
+    area: {x: 1077,y: 767,r: 300,W: 588,H: 50}
+  - name: "cancellation"
+    area: {x: 1843,y: 767,r: 300,W: 438,H: 50}
+  - name: "currency"
+    area: {x: 2267,y: 767,r: 300,W: 195,H: 50}
+
+  - name: "item_1_serial"
+    area: {x: 0,y: 1125,r: 300,W: 155,H: 105}
+  - name: "item_1_description"
+    area: {x: 115,y: 1135,r: 300,W: 1235,H: 105}
+  - name: "item_1_qty"
+    area: {x: 1400,y: 1130,r: 300,W: 265,H: 105}
+  - name: "item_1_price"
+    area: {x: 1660,y: 1128,r: 300,W: 265,H: 105}
+  - name: "item_1_discount"
+    area: {x: 1870,y: 1130,r: 300,W: 265,H: 105}
+  - name: "item_1_net"
+    area: {x: 2225,y: 1128,r: 300,W: 265,H: 105}
+
+  - name: "item_2_serial"
+    area: {x: 0,y: 1225,r: 300,W: 155,H: 105}
+  - name: "item_2_description"
+    area: {x: 115,y: 1235,r: 300,W: 1235,H: 105}
+  - name: "item_2_qty"
+    area: {x: 1400,y: 1230,r: 300,W: 265,H: 105}
+  - name: "item_2_price"
+    area: {x: 1660,y: 1228,r: 300,W: 265,H: 105}
+  - name: "item_2_discount"
+    area: {x: 1870,y: 1230,r: 300,W: 265,H: 105}
+  - name: "item_2_net"
+    area: {x: 2225,y: 1228,r: 300,W: 265,H: 105}
+
+  - name: "item_3_serial"
+    area: {x: 0,y: 1325,r: 300,W: 155,H: 105}
+  - name: "item_3_description"
+    area: {x: 115,y: 1335,r: 300,W: 1235,H: 105}
+  - name: "item_3_qty"
+    area: {x: 1400,y: 1330,r: 300,W: 265,H: 105}
+  - name: "item_3_price"
+    area: {x: 1660,y: 1328,r: 300,W: 265,H: 105}
+  - name: "item_3_discount"
+    area: {x: 1870,y: 1330,r: 300,W: 265,H: 105}
+  - name: "item_3_net"
+    area: {x: 2225,y: 1328,r: 300,W: 265,H: 105}
+
+  - name: "item_4_serial"
+    area: {x: 0,y: 1425,r: 300,W: 155,H: 105}
+  - name: "item_4_description"
+    area: {x: 115,y: 1435,r: 300,W: 1235,H: 105}
+  - name: "item_4_qty"
+    area: {x: 1400,y: 1430,r: 300,W: 265,H: 105}
+  - name: "item_4_price"
+    area: {x: 1660,y: 1428,r: 300,W: 265,H: 105}
+  - name: "item_4_discount"
+    area: {x: 1870,y: 1430,r: 300,W: 265,H: 105}
+  - name: "item_4_net"
+    area: {x: 2225,y: 1428,r: 300,W: 265,H: 105}
+
+  - name: "item_5_serial"
+    area: {x: 0,y: 1525,r: 300,W: 155,H: 105}
+  - name: "item_5_description"
+    area: {x: 115,y: 1535,r: 300,W: 1235,H: 105}
+  - name: "item_5_qty"
+    area: {x: 1400,y: 1530,r: 300,W: 265,H: 105}
+  - name: "item_5_price"
+    area: {x: 1660,y: 1528,r: 300,W: 265,H: 105}
+  - name: "item_5_discount"
+    area: {x: 1870,y: 1530,r: 300,W: 265,H: 105}
+  - name: "item_5_net"
+    area: {x: 2225,y: 1528,r: 300,W: 265,H: 105}
+
+  - name: "item_6_serial"
+    area: {x: 0,y: 1625,r: 300,W: 155,H: 105}
+  - name: "item_6_description"
+    area: {x: 115,y: 1635,r: 300,W: 1235,H: 105}
+  - name: "item_6_qty"
+    area: {x: 1400,y: 1630,r: 300,W: 265,H: 105}
+  - name: "item_6_price"
+    area: {x: 1660,y: 1628,r: 300,W: 265,H: 105}
+  - name: "item_6_discount"
+    area: {x: 1870,y: 1630,r: 300,W: 265,H: 105}
+  - name: "item_6_net"
+    area: {x: 2225,y: 1628,r: 300,W: 265,H: 105}
+
+  - name: "item_7_serial"
+    area: {x: 0,y: 1725,r: 300,W: 155,H: 105}
+  - name: "item_7_description"
+    area: {x: 115,y: 1735,r: 300,W: 1235,H: 105}
+  - name: "item_7_qty"
+    area: {x: 1400,y: 1730,r: 300,W: 265,H: 105}
+  - name: "item_7_price"
+    area: {x: 1660,y: 1728,r: 300,W: 265,H: 105}
+  - name: "item_7_discount"
+    area: {x: 1870,y: 1730,r: 300,W: 265,H: 105}
+  - name: "item_7_net"
+    area: {x: 2225,y: 1728,r: 300,W: 265,H: 105}
+
+  - name: "item_8_serial"
+    area: {x: 0,y: 1825,r: 300,W: 155,H: 105}
+  - name: "item_8_description"
+    area: {x: 115,y: 1835,r: 300,W: 1235,H: 105}
+  - name: "item_8_qty"
+    area: {x: 1400,y: 1830,r: 300,W: 265,H: 105}
+  - name: "item_8_price"
+    area: {x: 1660,y: 1828,r: 300,W: 265,H: 105}
+  - name: "item_8_discount"
+    area: {x: 1870,y: 1830,r: 300,W: 265,H: 105}
+  - name: "item_8_net"
+    area: {x: 2225,y: 1828,r: 300,W: 265,H: 105}
+
+  - name: "item_9_serial"
+    area: {x: 0,y: 1925,r: 300,W: 155,H: 105}
+  - name: "item_9_description"
+    area: {x: 115,y: 1935,r: 300,W: 1235,H: 105}
+  - name: "item_9_qty"
+    area: {x: 1400,y: 1930,r: 300,W: 265,H: 105}
+  - name: "item_9_price"
+    area: {x: 1660,y: 1928,r: 300,W: 265,H: 105}
+  - name: "item_9_discount"
+    area: {x: 1870,y: 1930,r: 300,W: 265,H: 105}
+  - name: "item_9_net"
+    area: {x: 2225,y: 1928,r: 300,W: 265,H: 105}
+
+  - name: "item_10_serial"
+    area: {x: 0,y: 1925,r: 300,W: 155,H: 105}
+  - name: "item_10_description"
+    area: {x: 115,y: 1935,r: 300,W: 1235,H: 105}
+  - name: "item_10_qty"
+    area: {x: 1400,y: 1930,r: 300,W: 265,H: 105}
+  - name: "item_10_price"
+    area: {x: 1660,y: 1928,r: 300,W: 265,H: 105}
+  - name: "item_10_discount"
+    area: {x: 1870,y: 1930,r: 300,W: 265,H: 105}
+  - name: "item_10_net"
+    area: {x: 2225,y: 1928,r: 300,W: 265,H: 105}
+
+  - name: "item_11_serial"
+    area: {x: 0,y: 2025,r: 300,W: 155,H: 105}
+  - name: "item_11_description"
+    area: {x: 115,y: 2035,r: 300,W: 1235,H: 105}
+  - name: "item_11_qty"
+    area: {x: 1400,y: 2030,r: 300,W: 265,H: 105}
+  - name: "item_11_price"
+    area: {x: 1660,y: 2028,r: 300,W: 265,H: 105}
+  - name: "item_11_discount"
+    area: {x: 1870,y: 2030,r: 300,W: 265,H: 105}
+  - name: "item_11_net"
+    area: {x: 2225,y: 2028,r: 300,W: 265,H: 105}
+
+
+options:
+    remove_whitespace: false
+    currency: MYR
+    date_formats:
+        - '%d.%m.%Y'
+    languages:
+        - en
+    decimal_separator: '.'
