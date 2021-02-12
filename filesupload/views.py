@@ -19,7 +19,7 @@ def upload_file(request):
         out = filedata.extract_multi(request.FILES['file'].name, request.POST.get('catagory').lower())
         print(out)
         context = {'msg': msg, 'time': 'Extracted Data : ',
-                   'outpt': '<span style="color: red;">' + str(out) + '</span>'}
+                   'outpt': '<span>' + str(out) + '</span>'}
 
         return render(request, "single.html", context)
     else:
@@ -45,7 +45,7 @@ def upload_multiple_files(request):
             #Testing
 
         context = {'msg': msg, 'time': 'Extracted Data : ',
-                   'outpt': '<span style="color: red;">' + str(out) + '</span>'}
+                   'outpt': '<span>' + str(out) + '</span>'}
 
         return render(request, "multiple.html", context)
 

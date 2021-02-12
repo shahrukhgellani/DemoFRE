@@ -35,13 +35,14 @@ def extract_multi(file_refrence, catagory):
 
     pages = glob.glob(r"C:\Users\Shahrukh\Desktop\djangofilesupload\filesupload\pdf_processing\{}".format("*.pdf"))
     print(pages)
-    result = []
+    result = ''
     templates = read_templates(r'C:\Users\Shahrukh\Desktop\djangofilesupload\MlEngine\invoiceX\templates')
     for page in pages:
         # path = r"C:\Users\Shahrukh\Desktop\djangofilesupload\filesupload\pdf_processing\{pdf}".format(pdf=page)
-        result.append(extract_data(page, templates=templates))
+        result += to_table(extract_data(page, templates=templates), page)
     remove_file()
     return result
+
 
 def remove_file():
     folder = r'C:\Users\Shahrukh\Desktop\djangofilesupload\filesupload\pdf_processing'
@@ -54,3 +55,20 @@ def remove_file():
                 shutil.rmtree(file_path)
         except Exception as e:
             print('Failed to delete %s. Reason: %s' % (file_path, e))
+
+
+def to_table(extracted, file):
+    table = '<tr><th>File Name</th><th>{f}</th></tr>'.format(f=file.split('\\')[-1])
+    item = ''
+    i = 1
+    for key in extracted.keys():
+        if key.endswith('net'):
+            table += '<tr><td>Item {i}</td><td>{info}</td></tr>'.format(info=item, i=i)
+            i += 1
+            item = ''
+        elif key.startswith('item'):
+            item += '{Lable}: {data}<br/>'.format(Lable=key.split('_')[-1],
+                                             data=extracted.get(key) if extracted.get(key) != "" else 0)
+        else:
+            table += '<tr><td>{lable}</td><td>{info}</td></tr>'.format(lable=key, info=extracted.get(key))
+    return '<table>{table}</table><br/><hr/>'.format(table=table)
