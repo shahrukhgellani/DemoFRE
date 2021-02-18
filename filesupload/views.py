@@ -36,12 +36,11 @@ def upload_multiple_files(request):
         form = UploadFileForm(request.POST, request.FILES)
         files = request.FILES.getlist('files')
         msg = '<span style="color: green;">' + request.POST.get('catagory') + ' successfully uploaded</span>'
-        out = []
+        out = ''
         catagory = request.POST.get('catagory')
         for f in files:
             handle_uploaded_file(f, catagory)
-            out.append(f.name)
-            out.append(filedata.extract_multi(f.name, catagory))
+            out += filedata.extract_multi(f.name, catagory)
             #Testing
 
         context = {'msg': msg, 'time': 'Extracted Data : ',

@@ -4,6 +4,7 @@ import glob
 from PyPDF2 import PdfFileReader, PdfFileWriter
 import os
 import shutil
+total = 0
 
 
 def extract(name):
@@ -20,7 +21,6 @@ def pdf_splitter(file_refrence, catagory):
     pdf = PdfFileReader(
         r"C:\Users\Shahrukh\Desktop\djangofilesupload\ML Data\{catagory}\{file}".format(file=file_refrence,
                                                                                         catagory=catagory))
-    print("Check")
     for page in range(pdf.getNumPages()):
         pdf_writer = PdfFileWriter()
         pdf_writer.addPage(pdf.getPage(page))
@@ -32,7 +32,7 @@ def pdf_splitter(file_refrence, catagory):
 
 def extract_multi(file_refrence, catagory):
     pdf_splitter(file_refrence, catagory)
-
+    global total
     pages = glob.glob(r"C:\Users\Shahrukh\Desktop\djangofilesupload\filesupload\pdf_processing\{}".format("*.pdf"))
     print(pages)
     result = ''
@@ -41,7 +41,9 @@ def extract_multi(file_refrence, catagory):
         # path = r"C:\Users\Shahrukh\Desktop\djangofilesupload\filesupload\pdf_processing\{pdf}".format(pdf=page)
         result += to_table(extract_data(page, templates=templates), page)
     remove_file()
-    return result
+    ret_data = '{result}<h3 style="float:right">Total: {total}</h3>'.format(result=result, total=total)
+    total = 0
+    return ret_data
 
 
 def remove_file():
@@ -57,18 +59,58 @@ def remove_file():
             print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 
-def to_table(extracted, file):
-    table = '<tr><th>File Name</th><th>{f}</th></tr>'.format(f=file.split('\\')[-1])
+def to_table(extracted, file, first=False):
     item = ''
-    i = 1
-    for key in extracted.keys():
-        if key.endswith('net'):
-            table += '<tr><td>Item {i}</td><td>{info}</td></tr>'.format(info=item, i=i)
-            i += 1
-            item = ''
-        elif key.startswith('item'):
-            item += '{Lable}: {data}<br/>'.format(Lable=key.split('_')[-1],
-                                             data=extracted.get(key) if extracted.get(key) != "" else 0)
-        else:
-            table += '<tr><td>{lable}</td><td>{info}</td></tr>'.format(lable=key, info=extracted.get(key))
-    return '<table>{table}</table><br/><hr/>'.format(table=table)
+    global total
+    if first:
+        table = '<tr><th>File Name</th><th>{f}</th></tr>'.format(
+            f=file.split('\\')[-1].split('page')[0].rstrip('_')) + "<tr><th colspan=2>Page No: 1</th></tr>"
+        i = 1
+        for key in extracted.keys():
+            if 'total' in key:
+                continue
+            if key.endswith('net'):
+                if len(item) <= 68:
+                    break
+                item += '{Lable}: {data}<br/>'.format(Lable=key.split('_')[-1],
+                                                      data=extracted.get(key).split('')[0] if extracted.get(
+                                                          key) != "" else 0)
+                table += '<tr><td style="width: 100px">Item {i}</td><td>{info}</td></tr>'.format(info=item, i=i)
+                i += 1
+                item = ''
+                total += float(extracted.get(key).split('')[0])
+            elif key.startswith('item'):
+                item += '{Lable}: {data}<br/>'.format(Lable=key.split('_')[-1],
+                                                      data=extracted.get(key).split('')[0] if extracted.get(
+                                                          key) != "" else 0)
+            else:
+                try:
+                    table += '<tr><td>{lable}</td><td>{info}</td></tr>'.format(lable=key,
+                                                                               info=extracted.get(key).split('')[0])
+                except Exception:
+                    table += '<tr><td>{lable}</td><td>{info}</td></tr>'.format(lable=key,
+                                                                               info=extracted.get(key))
+        return '<table>{table}</table><br/><hr/>'.format(table=table)
+
+    else:
+        table = '<tr><th colspan=2>Page No: {pageNo}</th></tr>'.format(pageNo=file.split('_')[-1].split('.')[0])
+        i = 1
+        for key in extracted.keys():
+            if 'item' in key:
+                if key.endswith('net'):
+                    if len(item) <= 68:
+                        break
+                    item += '{Lable}: {data}<br/>'.format(Lable=key.split('_')[-1],
+                                                          data=extracted.get(key).split('')[0] if extracted.get(
+                                                              key) != "" else 0)
+                    total += float(extracted.get(key).split('')[0])
+                    table += '<tr><td style="width: 100px">Item {i}</td><td>{info}</td></tr>'.format(info=item, i=i)
+                    i += 1
+                    item = ''
+                elif key.startswith('item'):
+                    item += '{Lable}: {data}<br/>'.format(Lable=key.split('_')[-1],
+                                                          data=extracted.get(key).split('')[0] if extracted.get(
+                                                              key) != "" else 0)
+
+        return '<table>{table}</table><br/><hr/>'.format(table=table)
+
